@@ -77,7 +77,8 @@ function successHandle(healthData){
     .data(healthData)
     .enter()
     .append("text")
-    .attr("dx", function(d){return -20})
+    .attr("x", d => xLinearScale(d.poverty))
+    .attr("y", d => yLinearScale(d.obesity))
     .text(function(d){return d.id})
     .classed("stateText", true);
 
