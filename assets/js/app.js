@@ -76,16 +76,10 @@ function successHandle(healthData){
     var text = chartGroup.selectAll("text")
     .data(healthData)
     .enter()
-    .append("text");
-
-    //Add SVG Text Element Attributes
-    var textLabels = text
-    .attr("x", d => xLinearScale(d.poverty))
-    .attr("y", d => yLinearScale(d.obesity))
-    //.text(d => d.id)
-    .classed("stateText", true)
-
-    textLabels.text(function(d,i) { return d.id; });
+    .append("text")
+    .attr("dx", function(d){return -20})
+    .text(function(d){return d.id})
+    .classed("stateText", true);
 
     // Create axes labels
     chartGroup.append("text")
