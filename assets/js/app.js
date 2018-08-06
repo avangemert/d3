@@ -73,12 +73,12 @@ function successHandle(healthData){
     .classed("stateCircle", true);
 
     //Add the SVG Text Element to the svgContainer
-    var text = chartGroup.selectAll("text")
+    var circlesText = chartGroup.selectAll("text")
     .data(healthData)
     .enter()
     .append("text")
-    .attr("dx", d => xLinearScale(d.poverty))
-    .attr("dy", d => yLinearScale(d.obesity))
+    .attr("x", d => xLinearScale(d.poverty))
+    .attr("y", d => yLinearScale(d.obesity))
     .text(function(d){return d.id})
     .classed("stateText", true);
 
