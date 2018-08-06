@@ -82,7 +82,7 @@ function successHandle(healthData){
     var textLabels = text
     .attr("x", d => xLinearScale(d.poverty))
     .attr("y", d => yLinearScale(d.obesity))
-    .text(function (d) { return d.abbr; })
+    .text(d => d.abbr)
     .classed("stateText", true)
 
     // Create axes labels
