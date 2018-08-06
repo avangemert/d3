@@ -76,8 +76,7 @@ function successHandle(healthData){
     var text = chartGroup.selectAll("text")
     .data(healthData)
     .enter()
-    .append("text")
-    .merge(text);
+    .append("text");
 
     //Add SVG Text Element Attributes
     var textLabels = text
