@@ -68,9 +68,22 @@ function successHandle(healthData){
     .append("circle")
     .attr("cx", d => xLinearScale(d.poverty))
     .attr("cy", d => yLinearScale(d.obesity))
-    .attr("r", "10")
-    .attr("fill", "blue")
-    .attr("opacity", ".5");
+    .attr("r", "15")
+    .attr("opacity", ".5")
+    .classed("stateCircle", true);
+
+    //Add the SVG Text Element to the svgContainer
+    var text = chartGroup.selectAll("text")
+    .data(healthData)
+    .enter()
+    .append("text");
+
+    //Add SVG Text Element Attributes
+    var textLabels = text
+    .attr("x", d => xLinearScale(d.poverty))
+    .attr("y", d => yLinearScale(d.obesity))
+    .text(function (d) { return d.abbr; })
+    .classed("stateText", true)
 
     // Create axes labels
     chartGroup.append("text")
