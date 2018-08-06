@@ -82,8 +82,10 @@ function successHandle(healthData){
     var textLabels = text
     .attr("x", d => xLinearScale(d.poverty))
     .attr("y", d => yLinearScale(d.obesity))
-    .text(d => d.id)
+    //.text(d => d.id)
     .classed("stateText", true)
+
+    textLabels.text(function(d,i) { return d.id; });
 
     // Create axes labels
     chartGroup.append("text")
