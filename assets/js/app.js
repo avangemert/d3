@@ -71,21 +71,16 @@ function successHandle(healthData){
     .attr("r", "15")
     .attr("opacity", ".5")
     .classed("stateCircle", true)
+
+    //Add the SVG Text Element to the svgContainer
+    var circlesText = chartGroup.selectAll("text")
+    .data(healthData)
+    .enter()
     .append("text")
     .attr("x", d => xLinearScale(d.poverty))
     .attr("y", d => yLinearScale(d.obesity))
     .text(function(d){return d.id})
     .classed("stateText", true);
-
-    //Add the SVG Text Element to the svgContainer
-    // var circlesText = chartGroup.selectAll("text")
-    // .data(healthData)
-    // .enter()
-    // .append("text")
-    // .attr("x", d => xLinearScale(d.poverty))
-    // .attr("y", d => yLinearScale(d.obesity))
-    // .text(function(d){return d.id})
-    // .classed("stateText", true);
 
     // Create axes labels
     chartGroup.append("text")
