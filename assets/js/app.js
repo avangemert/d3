@@ -78,7 +78,7 @@ function successHandle(healthData){
     .enter()
     .append("text")
     .classed("stateText", true)
-    .text(function(d){return d.id})
+    .text(function(d){return d.abbr})
     .attr("x", d => xLinearScale(d.poverty))
     .attr("y", d => yLinearScale(d.obesity));
 
@@ -90,10 +90,9 @@ function successHandle(healthData){
         .attr("class", "aText")
         .text("Obesity (%)");
 
-        
-
-
-
-
-    
+    chartGroup.append("text")
+        .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
+        .attr("class", "aText")
+        .text("Poverty (%)");
+   
 }
