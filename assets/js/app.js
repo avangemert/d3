@@ -72,7 +72,7 @@ function successHandle(healthData){
     .attr("opacity", ".5")
     .classed("stateCircle", true)
 
-    //Add the SVG Text Element to the svgContainer
+    // Create Circle Text
     var circlesText = chartGroup.selectAll("text.stateText")
     .data(healthData)
     .enter()
@@ -81,6 +81,27 @@ function successHandle(healthData){
     .text(function(d){return d.abbr})
     .attr("x", d => xLinearScale(d.poverty))
     .attr("y", d => yLinearScale(d.obesity));
+
+    // Initialize tooltip
+    var toolTip = d3.tip()
+        .attr("class", "d3-tip")
+        .offset([80, -60])
+        .html(function(d) {
+            return(`${d.state}<br>Poverty: ${d.poverty}%<br>Obesity: ${d.obesity}%`);
+        });
+
+    // Create tooltip in the chart
+    chartGroup.call(toolTip);
+
+    // Create event listeners to display and hide tooltips
+    circlesGroup.on("click", function(data){
+        toolTip.show(data);
+    })
+
+        // on mouseout event
+        .on("mouseout", function(data, index){
+            toolTip.hide(data);
+        });
 
     // Create axes labels
     chartGroup.append("text")
