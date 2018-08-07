@@ -46,7 +46,7 @@ function successHandle(healthData){
         .range([0, width]);
 
     var yLinearScale = d3.scaleLinear()
-        .domain([0, d3.max(healthData, d => d.obesity)])
+        .domain([20, d3.max(healthData, d => d.obesity)])
         .range([height, 0]);
 
     // Create axis functions
