@@ -70,8 +70,8 @@ function successHandle(healthData){
     .attr("cy", d => yLinearScale(d.obesity))
     .attr("r", "15")
     .attr("opacity", ".5")
-    .classed("stateCircle", true)
-
+    .classed("stateCircle", true);
+    
     // Create Circle Text
     var circlesText = chartGroup.selectAll("text.stateText")
     .data(healthData)
@@ -85,23 +85,20 @@ function successHandle(healthData){
     // Initialize tooltip
     var toolTip = d3.tip()
         .attr("class", "d3-tip")
-        .offset([80, -60])
         .html(function(d) {
-            return(`${d.state}<br>Poverty: ${d.poverty}%<br>Obesity: ${d.obesity}%`);
-        });
+            return(`${d.state}<br>Poverty: ${d.poverty}%<br>Obesity: ${d.obesity}%`);});
+        
 
     // Create tooltip in the chart
     chartGroup.call(toolTip);
 
     // Create event listeners to display and hide tooltips
     circlesGroup.on("click", function(data){
-        toolTip.show(data);
-    })
-
-        // on mouseout event
-        .on("mouseout", function(data, index){
-            toolTip.hide(data);
-        });
+        toolTip.show(data, event.target)
+            .direction("nw");
+    }).on("mouseout", function(data, index){
+        toolTip.hide(data, event.target);
+    });
 
     // Create axes labels
     chartGroup.append("text")
