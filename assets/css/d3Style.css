@@ -26,6 +26,7 @@
 /* font size dependent on radius, see app.js */
 .stateText {
   font-family: sans-serif;
+  font-size: 10px;
   fill: #fff;
   text-anchor: middle;
 }
@@ -41,6 +42,7 @@
 }
 
 .d3-tip {
+  position: absolute;
   padding: 6px;
   font-size: 12px;
   line-height: 1;
